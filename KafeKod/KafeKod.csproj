@@ -116,5 +116,17 @@
   <ItemGroup>
     <None Include="Resources\bataatti.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\masabos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\masadolu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KafeKod.Data\KafeKod.Data.csproj">
+      <Project>{ca9a1c5c-8d4c-48e8-95a2-bdb2f3ce6771}</Project>
+      <Name>KafeKod.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

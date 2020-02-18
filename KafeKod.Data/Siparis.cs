@@ -9,6 +9,10 @@ namespace KafeKod.Data
     public enum SiparisDurum {Aktif,Odendi,Iptal }
     public class Siparis
     {
+        public Siparis()
+        {
+            SiparisDetaylar = new List<SiparisDetay>();
+        }
 
         public int MasaNo { get; set; }
 
@@ -23,6 +27,8 @@ namespace KafeKod.Data
         public string ToplamtutarTL => string.Format("{0:0.00 ₺}", ToplamTutar());
 
         public decimal ToplamTutar() => SiparisDetaylar.Sum(x => x.Tutar());
-        
+
+        public decimal OdenenTutar { get; set; }
+
     }
 }
