@@ -99,7 +99,6 @@ namespace KafeKod
                 Close();
 
             }
-            siparis.Durum = SiparisDurum.Iptal;
 
             DialogResult = DialogResult.Cancel;
         }
