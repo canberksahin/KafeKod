@@ -102,5 +102,13 @@ namespace KafeKod
 
             DialogResult = DialogResult.Cancel;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.dgvSiparisDetaylari.SelectedRows.Count > 0)
+            {
+                dgvSiparisDetaylari.Rows.RemoveAt(this.dgvSiparisDetaylari.SelectedRows[0].Index);
+            }
+        }
     }
 }

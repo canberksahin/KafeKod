@@ -43,6 +43,7 @@
             this.btnOdemeAl = new System.Windows.Forms.Button();
             this.btnSiparisIptal = new System.Windows.Forms.Button();
             this.lblTutar = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSiparisDetaylari)).BeginInit();
             this.SuspendLayout();
@@ -238,6 +239,17 @@
             this.lblTutar.TabIndex = 14;
             this.lblTutar.Text = "0.00 TL";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Location = new System.Drawing.Point(201, 399);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Seçileni İptal Et";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SiparisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +257,7 @@
             this.BackgroundImage = global::KafeKod.Properties.Resources.bataatti;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(598, 465);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblTutar);
             this.Controls.Add(this.btnSiparisIptal);
             this.Controls.Add(this.btnOdemeAl);
@@ -287,5 +300,6 @@
         private System.Windows.Forms.Button btnOdemeAl;
         private System.Windows.Forms.Button btnSiparisIptal;
         private System.Windows.Forms.Label lblTutar;
+        private System.Windows.Forms.Button button1;
     }
 }
