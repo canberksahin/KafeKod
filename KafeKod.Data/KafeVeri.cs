@@ -20,6 +20,9 @@ namespace KafeKod.Data
         public List<Siparis> AktifSiparisler { get; set; }
 
         public List<Siparis> GecmisSiparisler { get; set; }
+        public int MasaAdet { get; set; } = 20 ; 
+
+
 
 
     }
