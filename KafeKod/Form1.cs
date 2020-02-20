@@ -98,7 +98,7 @@ namespace KafeKod
                 }
 
                 SiparisForm frmsiparis = new SiparisForm(db,sip);
-                frmsiparis.MasaTasindi += Frmsiparis_MasaTasindi;
+                frmsiparis.MasaTasiniyor += Frmsiparis_MasaTasindi;
                 frmsiparis.ShowDialog();
 
                 if (sip.Durum != SiparisDurum.Aktif)
@@ -114,17 +114,13 @@ namespace KafeKod
 
         private void Frmsiparis_MasaTasindi(object sender, MasaTasimaEventArgs e)
         {
-            ListViewItem lviEskiMasa = null;
-            foreach (ListViewItem item in lvwMasalar.Items)
-            {
-                if (item.Tag == e.TasinanSiparis)
-                {
-                    lviEskiMasa = item;
-                    break;
-                }
-            }
+            ListViewItem lviEskiMasa = MasaBul(e.EskiMasaNo);
             lviEskiMasa.Tag = e.EskiMasaNo;
             lviEskiMasa.ImageKey = "bos";
+
+            ListViewItem livYeniMasa = MasaBul(e.YeniMasaNo);
+            livYeniMasa.Tag = e.TasinanSiparis;
+            livYeniMasa.ImageKey = "dolu";
         }
 
         private void tsmiGecmisSiparisler_Click(object sender, EventArgs e)
@@ -143,6 +139,23 @@ namespace KafeKod
         {
             string json = JsonConvert.SerializeObject(db);
             File.WriteAllText("veri.json", json);
+        }
+
+        private ListViewItem MasaBul(int masaNo)
+        {
+            foreach (ListViewItem item in lvwMasalar.Items)
+            {
+                if (item.Tag is int &&(int)item.Tag == masaNo)
+                {
+                    return  item;
+                }
+               else if (item.Tag is Siparis && ((Siparis)item.Tag).MasaNo == masaNo)
+                {
+                    return item;
+                }
+
+            }
+            return null;
         }
     }
 }
