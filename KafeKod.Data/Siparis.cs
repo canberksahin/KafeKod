@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,12 +8,11 @@ using System.Threading.Tasks;
 namespace KafeKod.Data
 {
     public enum SiparisDurum {Aktif,Odendi,Iptal }
+
+    [Table("Siparisler")]
     public class Siparis
     {
-        public Siparis()
-        {
-            SiparisDetaylar = new List<SiparisDetay>();
-        }
+        public int Id { get; set; }
 
         public int MasaNo { get; set; }
 
@@ -22,13 +22,10 @@ namespace KafeKod.Data
 
         public SiparisDurum Durum { get; set; }
 
-        public List<SiparisDetay> SiparisDetaylar { get; set; }
-
-        public string ToplamtutarTL => string.Format("{0:0.00 ₺}", ToplamTutar());
-
-        public decimal ToplamTutar() => SiparisDetaylar.Sum(x => x.Tutar());
-
         public decimal OdenenTutar { get; set; }
 
+
+
+        public virtual List<SiparisDetay> SiparisDetaylar { get; set; }
     }
 }
