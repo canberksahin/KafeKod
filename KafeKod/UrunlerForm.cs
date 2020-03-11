@@ -14,14 +14,12 @@ namespace KafeKod
     public partial class UrunlerForm : Form
     {
         KafeContext db;
-        BindingList<Urun> blUrunler;
-        public UrunlerForm( KafeContext kafeVeri)
+        public UrunlerForm(KafeContext kafeVeri)
         {
             db = kafeVeri;
             InitializeComponent();
             dgvUrunler.AutoGenerateColumns = false;
-            blUrunler = new BindingList<Urun>(db.Urunler);
-            dgvUrunler.DataSource = blUrunler;
+            dgvUrunler.DataSource = db.Urunler.ToList();
         }
 
         public void btnEkle_Click(object sender, EventArgs e)
@@ -32,10 +30,11 @@ namespace KafeKod
             }
             else
             {
-            Urun yeniUrun = new Urun {UrunAd = txtUrunAd.Text.Trim(), BirimFiyat = nudBirimFiyat.Value };
-            blUrunler.Add(yeniUrun);
-            txtUrunAd.Clear();
-                db.Urunler.Sort();
+                Urun yeniUrun = new Urun { UrunAd = txtUrunAd.Text.Trim(), BirimFiyat = nudBirimFiyat.Value };
+                db.Urunler.Add(yeniUrun);
+                db.SaveChanges();
+                txtUrunAd.Clear();
+                dgvUrunler.DataSource = db.Urunler.OrderBy(x => x.UrunAd).ToList();
             }
         }
 
@@ -47,7 +46,7 @@ namespace KafeKod
 
         private void dgvUrunler_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.ColumnIndex ==0)
+            if (e.ColumnIndex == 0)
             {
                 if (e.FormattedValue.ToString().Trim() == "")
                 {
@@ -57,6 +56,7 @@ namespace KafeKod
                 else
                 {
                     dgvUrunler.Rows[e.RowIndex].ErrorText = "";
+                    db.SaveChanges();
                 }
             }
         }
