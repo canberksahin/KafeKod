@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace KafeKod.Data
 {
-    [Table("Urunler")]
     public class Urun
     {
+        public Urun()
+        {
+            SiparisDetaylar = new List<SiparisDetay>();
+        }
         public int Id { get; set; }
 
         [Required,MaxLength(50)]
@@ -19,6 +22,8 @@ namespace KafeKod.Data
         public decimal BirimFiyat { get; set; }
 
         public virtual List<SiparisDetay> SiparisDetaylar { get; set; }
+
+        public bool BittiMi { get; set; }
 
 
         public override string ToString()

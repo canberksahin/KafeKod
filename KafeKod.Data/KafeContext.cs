@@ -20,7 +20,14 @@ namespace KafeKod.Data
 
         public DbSet<SiparisDetay> SiparisDetaylar { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Urun>().HasMany(x => x.SiparisDetaylar).WithRequired(x => x.Urun).HasForeignKey(z=>z.UrunId).WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Urun>().ToTable("Urunler");
+                                                                                                                                                                  
+
+        }
 
 
 

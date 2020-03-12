@@ -26,7 +26,7 @@ namespace KafeKod
             this.siparis = siparis;
 
             db = kafeVeri;
-            cboUrun.DataSource = db.Urunler.OrderBy(x => x.UrunAd).ToList();
+            cboUrun.DataSource = db.Urunler.Where(x=>x.BittiMi==false).OrderBy(x => x.UrunAd).ToList();
             MasaNoGüncelle();
             TutarGuncelle();
             MasaNolariYükle();

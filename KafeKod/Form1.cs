@@ -27,6 +27,7 @@ namespace KafeKod
 
         private void MasalariOlustur()
         {
+            lvwMasalar.Items.Clear();
             #region Listview imagelerinin Hazırlanmasi
             ImageList il = new ImageList();
             il.Images.Add("bos", Properties.Resources.masabos);
@@ -141,6 +142,19 @@ namespace KafeKod
 
             }
             return null;
+        }
+
+        private void ayarlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ayarlar frm = new Ayarlar();
+            DialogResult dr=  frm.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                MasalariOlustur();
+            }
+
+
         }
     }
 }
